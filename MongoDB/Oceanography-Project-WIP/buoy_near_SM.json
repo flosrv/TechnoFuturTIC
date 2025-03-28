@@ -1,0 +1,16 @@
+{
+    "Watch circle radius": "4123 yards",
+    "Water depth": "4136 m",
+    "Sea temp depth": "1.5 m below water line",
+    "Barometer elevation": "2.7 m above mean sea level",
+    "Anemometer height": "4.1 m above site elevation",
+    "Air temp height": "3.7 m above site elevation",
+    "Site elevation": "sea level",
+    "Location": "14.512 N 75.153 W (14\u00b030'43\" N 75\u00b09'11\" W)",
+    "Statation Type": "Owned and maintained by National Data Buoy Center, 3-meter foam buoy, SCOOP payload",
+    "Name": "Station 42058  - Central Caribbean - 210 NM SSE of Kingston, Jamaica",
+    "bronze_marine": "Bronze_marine_data_Station_42058_Central_Caribbean_14-51_75-15",
+    "bronze_meteo": "bronze_meteo_data_Station_42058_Central_Caribbean_14-51_75-15",
+    "db": "MyProjects",
+    "schema": "End_To_End_Oceanography_ML"
+}
