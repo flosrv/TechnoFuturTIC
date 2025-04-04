@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-04 04:47:24 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjAyOjQwOjM1ICI7MjkyOQ=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjA0OjQ3OjI0ICI7MTszMDQ0"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="stock1, stock2, stock3, choix" type="Integer" array="False" size=""/>
+            <declare name="Asoif" type="Boolean" array="False" size=""/>
+            <assign variable="stock1" expression="2"/>
+            <assign variable="stock2" expression="1"/>
+            <assign variable="stock3" expression="0"/>
+            <assign variable="Asoif" expression="true"/>
+            <do expression="Asoif &amp;&amp; (stock1+stock2+stock3)&gt; 0">
+                <do expression="choix &lt; 1 || choix &gt; 3">
+                    <output expression="&quot;Entrez votre choix:&quot;" newline="True"/>
+                    <input variable="choix"/>
+                </do>
+                <if expression="choix == 1">
+                    <then>
+                        <if expression="stock1 &gt; 0">
+                            <then>
+                                <output expression="&quot;Boisson 1 ok&quot;" newline="True"/>
+                                <assign variable="stock1" expression="stock1 -1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Plus de boisson 1&quot;" newline="True"/>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <if expression="choix == 2">
+                            <then>
+                                <if expression="stock2 &gt; 0">
+                                    <then>
+                                        <output expression="&quot;Boisson 2 ok&quot;" newline="True"/>
+                                        <assign variable="stock2" expression="stock2 -1"/>
+                                    </then>
+                                    <else>
+                                        <output expression="&quot;Plus de boisson 2&quot;" newline="True"/>
+                                    </else>
+                                </if>
+                            </then>
+                            <else>
+                                <if expression="stock3 &gt; 0">
+                                    <then>
+                                        <output expression="&quot;Boisson 3 ok&quot;" newline="True"/>
+                                        <assign variable="stock3" expression="stock3 -1"/>
+                                    </then>
+                                    <else>
+                                        <output expression="&quot;Plus de boisson 3&quot;" newline="True"/>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <if expression="(stock1 + stock2 + stock3)&gt; 0">
+                    <then>
+                        <output expression="&quot;Encore soif?&quot;" newline="True"/>
+                        <input variable="Asoif"/>
+                    </then>
+                    <else/>
+                </if>
+            </do>
+            <if expression="Asoif">
+                <then>
+                    <output expression="&quot;Plus de stock&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Bye&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-04 04:57:31 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjA0OjQ3OjI4ICI7Mjk0MA=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjA0OjU3OjMxICI7MTszMDQz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Entree, MOTDEPASSE" type="String" array="False" size=""/>
+            <declare name="compteur" type="Integer" array="False" size=""/>
+            <assign variable="MOTDEPASSE" expression="&quot;MotDePasse&quot;"/>
+            <assign variable="compteur" expression="0"/>
+            <do expression="(compteur &lt; 3) &amp;&amp; MOTDEPASSE != Entree">
+                <output expression="&quot;Mot de passe?&quot;" newline="True"/>
+                <input variable="Entree"/>
+                <assign variable="compteur" expression="compteur + 1"/>
+            </do>
+            <if expression="MOTDEPASSE == Entree">
+                <then>
+                    <output expression="&quot;Bienvenue&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Compte bloqu&#233;!&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

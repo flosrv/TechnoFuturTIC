@@ -1,0 +1,9 @@
+
+class MyConfig():
+ 
+    UNITE_POIDS = "Kg"
+    UNITE_TAILLE = "m"
+
+    RATIO_ANNEEE_CHIEN = 7
+    RATIO_ANNEEE_CHAT = 1
+    RATIO_ANNEEE_OISEAU = 10

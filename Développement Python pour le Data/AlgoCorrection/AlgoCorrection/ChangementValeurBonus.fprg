@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-03 11:33:49 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjExOjA1OjI5ICI7MjkzMg=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjExOjMzOjQ5ICI7MTszMDQz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="A, B" type="Integer" array="False" size=""/>
+            <assign variable="A" expression="5"/>
+            <assign variable="B" expression="7"/>
+            <output expression="&quot; A vaut:  &quot; &amp; A &amp; &quot;  B vaut:  &quot; &amp; B" newline="True"/>
+            <assign variable="B" expression="B+A"/>
+            <assign variable="A" expression="B-A"/>
+            <assign variable="B" expression="B-A"/>
+            <output expression="&quot; A vaut:  &quot; &amp; A &amp; &quot;  B vaut:  &quot; &amp; B" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

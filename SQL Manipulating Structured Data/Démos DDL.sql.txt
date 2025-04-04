@@ -1,0 +1,78 @@
+-- CREATE 
+CREATE TABLE Employes (
+	id INT PRIMARY KEY,
+	nom VARCHAR(50),
+	prenom VARCHAR(50),
+	date_embauche DATE
+)
+
+-- IDENTITY auto-incrémentation
+-- DEFAULT valeur par défaut d'une colonne
+
+CREATE TABLE Clients (
+	client_id INT IDENTITY(1,1) PRIMARY KEY,
+	nom VARCHAR(50) NOT NULL,
+	ville VARCHAR(50) DEFAULT 'Non spécifié'
+)
+
+-- CONTRAINTES
+
+CREATE TABLE Produits (
+	produit_id INT IDENTITY(1,1) PRIMARY KEY, -- Auto-incrémentation en commençant par 1
+	nom VARCHAR(100) NOT NULL,
+	-- DECIMAL(x,y) --> x est le maximum de chiffres total et 
+	-- y est le nombre de chiffre maximal autorisé après la virgule
+	prix DECIMAL(10,2) CHECK (prix > 0), 
+	client_id INT,
+	FOREIGN KEY (client_id) REFERENCES Clients(client_id)
+)
+
+-- ON DELETE / ON CASCADE
+
+CREATE TABLE Categories (
+	id_categorie INT IDENTITY(1,1) PRIMARY KEY,
+	nom_categorie VARCHAR(50) NOT NULL,
+)
+
+CREATE TABLE Articles (
+	id_article INT IDENTITY(1,1) PRIMARY KEY,
+	nom_article NVARCHAR(100) NOT NULL,
+	id_categorie INT, -- Colonne de référence de la primary key de la table Categories
+	CONSTRAINT FK_Articles_Categories FOREIGN KEY (id_categorie) 
+		REFERENCES Categories (id_categorie)
+		ON DELETE SET NULL -- Action a effectuer si suppression dans la table parent
+		ON UPDATE CASCADE,  -- Action a effectuer si modification / mise à jour dans la table parent
+	CONSTRAINT CHK_Nom CHECK (nom_article LIKE 'CORA_%')
+)	
+
+-- ALTER TABLE
+-- Ajout d'une contrainte
+ALTER TABLE Articles
+ADD CONSTRAINT CHK_Nom CHECK (nom_article LIKE 'CORA_%')
+
+-- Ajout d'une colonne
+ALTER TABLE Employes
+ADD email NVARCHAR(100)
+
+-- Modification d'une colonne déjà existante
+ALTER TABLE Employes
+ALTER COLUMN nom VARCHAR(100)
+
+-- Suppression d'une contrainte
+ALTER TABLE Articles
+DROP CONSTRAINT CHK_Nom
+
+-- DROP / TRUNCATE / DELETE
+
+-- Le truncate va permettre de vider une table et réinitiliser l'auto-incrémentation
+TRUNCATE TABLE Articles
+
+-- Le delete va permettre de supprimer des entrées dans la DB. Si aucunes informations supplémentaires ne sont données
+-- alors ça supprime toutes les données (mais dans ce cas la le truncate est plus efficace). Sinon, l'ordre delete suit une condition.
+-- Dans tous les cas, il faut retenir que l'ordre delete ne réinitialise pas l'auto-incrémentation
+
+DELETE FROM Categories
+WHERE nom_categorie != 'truc bidule'
+
+-- Le drop va permettre de supprimer purement et simplement une table
+DROP TABLE Employes

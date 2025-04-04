@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-03 04:45:49 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjA0OjM2OjI3ICI7MjkzNg=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjA0OjQ1OjQ5ICI7MTszMDQ4"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Choix, Stock1, Stock2, Stock3" type="Integer" array="False" size=""/>
+            <assign variable="Stock1" expression="0"/>
+            <assign variable="Stock2" expression="2"/>
+            <assign variable="Stock3" expression="3"/>
+            <output expression="&quot;Choisissez une boisson:&quot;" newline="True"/>
+            <input variable="Choix"/>
+            <if expression="Choix ==1">
+                <then>
+                    <if expression="Stock1 &gt; 0">
+                        <then>
+                            <output expression="&quot;Boisson1 ok&quot;" newline="True"/>
+                            <assign variable="Stock1" expression="Stock1 -1"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Plus de boisson1&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <if expression="Choix == 2">
+                        <then>
+                            <if expression="Stock2 &gt; 0">
+                                <then>
+                                    <output expression="&quot;Boisson2 ok&quot;" newline="True"/>
+                                    <assign variable="Stock2" expression="Stock2 -1"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Plus de boisson2&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <if expression="Choix == 3">
+                                <then>
+                                    <if expression="Stock3 &gt; 0">
+                                        <then>
+                                            <output expression="&quot;Boisson3 ok&quot;" newline="True"/>
+                                            <assign variable="Stock3" expression="Stock3 -1"/>
+                                        </then>
+                                        <else>
+                                            <output expression="&quot;Plus de boisson3&quot;" newline="True"/>
+                                        </else>
+                                    </if>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Impossible&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

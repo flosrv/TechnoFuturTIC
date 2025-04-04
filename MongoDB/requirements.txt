@@ -1,3 +1,0 @@
-pymongo
-motor
-asyncio

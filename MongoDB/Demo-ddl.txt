@@ -1,0 +1,82 @@
+use Demo;
+
+// permet de commenter une ligne
+/* permet de commenter un paragraphe */
+
+// créer une collection
+db.createCollection("test");
+
+// supprimer une collection
+db.test.drop();
+
+// inserer un document
+db.test.insert({
+    "hello": "world"
+})
+
+// attention ce-ci est traité comme un tableau.
+db.test.insert("hello world")
+
+// différents types
+db.test.insert({
+    nombre: 42,
+    arrayOfStrings: ['hello', "world"],
+    sousObjet: {
+        test: 'test'
+    },
+    maDate: new Date()
+});
+
+db.test.insertMany([
+    {
+        name: "objet1"
+    },
+    {
+        name: "objet2"
+    },
+]);
+
+
+
+
+
+
+// création de validation de schéma
+const stringSchema = {
+    bsonType: 'string'
+};
+const numberSchema = {
+    bsonType: 'number'
+};
+const personSchema = {
+    bsonType: 'object',
+    required: ['nom', 'prenom'],
+    properties: {
+        nom: stringSchema,
+        prenom: stringSchema
+    }
+}
+db.createCollection("villes", {
+    validator: {
+        $jsonSchema : {
+            bsonType: 'object',
+            required: ['nom', 'cp', 'nbHabitants', 'bourgmestre'],
+            properties : {
+                /* sans variable
+                nom: {
+                    bsonType: 'string'
+                }
+                */
+                nom: stringSchema, // avec variable
+                nbHabitants: numberSchema,
+                cp: stringSchema,
+                nbEcole: {
+                    bsonType: 'number',
+                    maximum: 255
+                },
+                bourgmestre: personSchema,
+                
+            }
+        }
+    }
+})

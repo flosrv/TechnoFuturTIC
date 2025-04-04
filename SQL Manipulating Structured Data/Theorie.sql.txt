@@ -1,0 +1,31 @@
+-- SELECT - DISTINCT - WHERE - CONDITION - ORDER BY - OPERATION ARITHMETIQUE
+-- BETWEEN - IN
+
+
+-- SELECT first_name, last_name, year_result, (CAST(year_result  AS Float) /20) *100 FROM Student
+
+-- SELECT DISTINCT first_name, last_name FROM Student Order by  first_name
+
+--SELECT GETDATE() as [Date du jour], 'Vive le SQL'
+
+--SELECT * FROM student WHERE section_id = '1110' AND course_id = 'EG2210'
+
+--SELECT * FROM student WHERE Year(birth_date) > 1970 AND  course_id LIKE '%EG%'
+
+--SELECT * FROM student WHERE birth_date BETWEEN '1960-01-01' AND '1970-12-31'
+
+--SELECT * FROM student WHERE year_result IN(19, 18, 2)
+
+-- NOT
+
+-- SELECT * FROM student WHERE last_name NOT LIKE '%e%'
+--SELECT * FROM student WHERE year_result NOT IN (12,16,18)
+
+-- IS NULL - IS NOT NULL
+SELECT * FROM section WHERE section_name IS NOT NULL
+
+
+
+
+
+

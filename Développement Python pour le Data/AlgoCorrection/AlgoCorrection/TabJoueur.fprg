@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-06 10:27:41 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDY7IjA5OjEzOjU3ICI7Mjk0Mg=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDY7IjEwOjI3OjQxICI7MTszMDQw"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, nbJoueur" type="Integer" array="False" size=""/>
+            <declare name="moyenne" type="Real" array="False" size=""/>
+            <assign variable="moyenne" expression="0"/>
+            <do expression="nbJoueur &lt;= 0 || nbJoueur &gt; 10">
+                <output expression="&quot; Entrez le nombre de joueur:&quot;" newline="True"/>
+                <input variable="nbJoueur"/>
+            </do>
+            <declare name="TabJoueur" type="Real" array="True" size="nbJoueur"/>
+            <for variable="i" start="0" end="nbJoueur - 1" direction="inc" step="1">
+                <output expression="&quot;Entrez le score du joueur &quot; &amp; i + 1" newline="True"/>
+                <input variable="TabJoueur[i]"/>
+                <assign variable="moyenne" expression="moyenne + TabJoueur[i]"/>
+            </for>
+            <output expression="&quot;La moyenne est de: &quot; &amp; moyenne/nbJoueur" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

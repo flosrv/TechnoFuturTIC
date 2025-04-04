@@ -1,0 +1,25 @@
+USE DemoDML
+GO
+
+CREATE TABLE [DemoIdentity](
+	[ID] INTEGER IDENTITY PRIMARY KEY,
+	[Name] NVARCHAR(64) NOT NULL
+)
+GO
+
+INSERT INTO [DemoIdentity] ([Name])
+	VALUES('Tom')
+
+SELECT * FROM [DemoIdentity]
+
+SET IDENTITY_INSERT [DemoIdentity] ON	--Active l'option d'insertion dans les colonnes identity de la table
+
+INSERT INTO [DemoIdentity] ([ID],[Name])
+	VALUES(3,'Jean')
+
+SET IDENTITY_INSERT [DemoIdentity] OFF --Désactive l'option d'insertion dans les colonnes identity de la table
+
+INSERT INTO [DemoIdentity] ([Name])
+	VALUES ('Alfred')
+
+SELECT @@IDENTITY

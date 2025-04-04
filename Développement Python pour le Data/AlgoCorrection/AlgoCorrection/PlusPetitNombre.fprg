@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-05 12:29:21 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDU7IjEyOjI0OjU0ICI7MjkzNA=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDU7IjEyOjI5OjIxICI7MTszMDQx"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="cpt, min, saisie" type="Integer" array="False" size=""/>
+            <assign variable="cpt" expression="0"/>
+            <assign variable="min" expression="0"/>
+            <do expression="cpt &lt; 10">
+                <output expression="&quot;Entrez un nombre:&quot;" newline="True"/>
+                <input variable="saisie"/>
+                <if expression="(saisie &lt; min) || (cpt == 0)">
+                    <then>
+                        <assign variable="min" expression="saisie"/>
+                    </then>
+                    <else/>
+                </if>
+                <assign variable="cpt" expression="cpt + 1"/>
+            </do>
+            <output expression="&quot;Le minimum est : &quot; &amp; min" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-04 11:21:56 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjA4OjQxOjQxICI7MjkzMw=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjEwOjIyOjAzICI7MTszMDMx"/>
+        <attribute name="edited" value="Rm9ybWE3MDY7REVTS1RPUC1OTDkxVUJVOzIwMTgtMDQtMDQ7IjExOjIxOjU2ICI7MTszMDM1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="op" type="String" array="False" size=""/>
+            <output expression="&quot;Entrez nombre 1&quot;" newline="True"/>
+            <input variable="nb1"/>
+            <output expression="&quot;Entrez operateur&quot;" newline="True"/>
+            <input variable="op"/>
+            <output expression="&quot;Entrez nombre 2&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-03 11:05:25 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjEwOjI1OjUzICI7MjkzMA=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjExOjA1OjI1ICI7MTszMDM2"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="A, B, C, D, E" type="Integer" array="False" size=""/>
+            <assign variable="A" expression="8%3"/>
+            <output expression="A" newline="True"/>
+            <assign variable="B" expression="4 +A"/>
+            <output expression="B" newline="True"/>
+            <assign variable="C" expression="B*A"/>
+            <output expression="C" newline="True"/>
+            <assign variable="D" expression="(C-A)*B"/>
+            <output expression="D" newline="True"/>
+            <assign variable="E" expression="((A +7)*(D/A))* 0"/>
+            <output expression="E" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

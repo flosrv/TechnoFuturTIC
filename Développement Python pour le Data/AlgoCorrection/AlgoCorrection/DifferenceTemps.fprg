@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-04 10:37:58 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjEwOjIyOjA4ICI7MjkyOA=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjEwOjM3OjU4ICI7MTszMDQ3"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="jour, jour1, jour2, heure, heure1, heure2, minute, minute1, minute2, seconde, seconde1, seconde2, temps, temps1, temps2" type="Integer" array="False" size=""/>
+            <output expression="&quot;Entrez Jour1&quot;" newline="True"/>
+            <input variable="jour1"/>
+            <output expression="&quot;Entrez Heure 1&quot;" newline="True"/>
+            <input variable="heure1"/>
+            <output expression="&quot;Entrez minute1&quot;" newline="True"/>
+            <input variable="minute1"/>
+            <output expression="&quot;Entrez seconde1&quot;" newline="True"/>
+            <input variable="seconde1"/>
+            <output expression="&quot;Entrez Jour2&quot;" newline="True"/>
+            <input variable="jour2"/>
+            <output expression="&quot;Entrez Heure 2&quot;" newline="True"/>
+            <input variable="heure2"/>
+            <output expression="&quot;Entrez minute2&quot;" newline="True"/>
+            <input variable="minute2"/>
+            <output expression="&quot;Entrez seconde2&quot;" newline="True"/>
+            <input variable="seconde2"/>
+            <assign variable="temps1" expression="(jour1 * 86400) + (heure1*3600)+(minute1*60)+seconde1"/>
+            <assign variable="temps2" expression="(jour2 * 86400) + (heure2*3600)+(minute2*60)+seconde2"/>
+            <if expression="temps1 &gt; temps2">
+                <then>
+                    <assign variable="temps" expression="temps1 - temps2"/>
+                </then>
+                <else>
+                    <assign variable="temps" expression="temps2 - temps1"/>
+                </else>
+            </if>
+            <assign variable="seconde" expression="temps %60"/>
+            <assign variable="minute" expression="(temps /60)%60"/>
+            <assign variable="heure" expression="(temps /3600)%24"/>
+            <assign variable="jour" expression="(temps /3600)/24"/>
+            <output expression="jour &amp; &quot; jour(s) &quot; &amp; heure &amp; &quot; heure(s) &quot; &amp; minute &amp; &quot; minute(s) &quot; &amp; seconde &amp; &quot; seconde(s)&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

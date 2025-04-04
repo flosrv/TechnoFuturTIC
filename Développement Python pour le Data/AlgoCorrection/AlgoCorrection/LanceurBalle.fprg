@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-03 03:19:32 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjAzOjEwOjMwICI7MjkyMQ=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjAzOjE5OjMyICI7MTszMDQw"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Pret, PanierVide" type="Boolean" array="False" size=""/>
+            <assign variable="Pret" expression="false"/>
+            <assign variable="PanierVide" expression="true"/>
+            <if expression="Pret &amp;&amp; !PanierVide">
+                <then>
+                    <output expression="&quot;Lancer Balle&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="!Pret &amp;&amp; !PanierVide">
+                        <then>
+                            <output expression="&quot;Joueur pas pret&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <if expression="PanierVide &amp;&amp; pret">
+                                <then>
+                                    <output expression="&quot;Panier Vide&quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Joueur pas pret et panier vide&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,130 @@
+CREATE DATABASE DemoDML
+GO
+
+USE DemoDML
+GO
+
+CREATE TABLE [User](
+	[User_Id] UNIQUEIDENTIFIER DEFAULT NEWID(), --UNIQUEIDENTIFIER 1234ABCD-12AB-12AB-12AB-1234567890AB
+												--NEWID() : Fonction générant un UNIQUEIDENTIFIER (Pas d'IDENTITY)
+	[First_Name] NVARCHAR(64) NOT NULL,
+	[Last_Name] NVARCHAR(64) NOT NULL,
+	[Birth_Date] DATE NOT NULL,
+	[Email] NVARCHAR(320) NOT NULL,
+	[Phone_Number] NVARCHAR(16),
+	[Profile_Picture] NVARCHAR(256),
+	CONSTRAINT [PK_User] PRIMARY KEY ([User_Id]),
+	CONSTRAINT [CK_User_Birth_Date] CHECK (DATEDIFF(YEAR,[Birth_Date], GETDATE()) >= 18),
+	CONSTRAINT [UK_User_Email] UNIQUE ([Email])
+)
+GO
+
+CREATE TABLE [BackupUser](
+	[Backup_Id] INTEGER IDENTITY PRIMARY KEY,
+	[User_Id] UNIQUEIDENTIFIER NOT NULL,
+	[First_Name] NVARCHAR(64) NOT NULL,
+	[Last_Name] NVARCHAR(64) NOT NULL,
+	[Birth_Date] DATE NOT NULL,
+	[Email] NVARCHAR(320) NOT NULL
+)
+GO
+
+TRUNCATE TABLE [BackupUser];
+GO
+
+ALTER TABLE [BackupUser] ADD [BackupDate] DATETIME2 DEFAULT GETDATE();
+GO
+
+TRUNCATE TABLE [User];
+GO
+
+--ORDRE DML
+--INSERT
+
+INSERT INTO [User]
+	VALUES (NEWID(), 'Samuel', 'Legrain', '1987-09-27', 'samuel.legrain@bstorm.be','+3280033800',NULL)
+GO
+
+INSERT INTO [User] ([First_Name],[Last_Name],[Email],[Birth_Date])
+	VALUES ('Mauritcio', 'Fivez', 'mauritcio.fivez@bstorm.be', '2000-01-01')
+GO
+
+INSERT INTO [User] ([First_Name],[Last_Name],[Email],[Birth_Date])
+	VALUES 
+		('Michael', 'Person','michael.person@cognitic.be', '1978-01-01'),
+		('Thierry', 'Morre', 'thierry.morre@cognitic.be', '1974-01-01')
+GO
+
+INSERT INTO [User] ([First_Name],[Last_Name],[Email],[Birth_Date])
+	VALUES ('Aude', 'Beurive', 'aude.beurive@bstorm.be', '2024-01-01')
+GO
+
+INSERT INTO [User] ([First_Name],[Last_Name],[Email],[Birth_Date])
+	VALUES 
+		('Samuel', 'Legrain', 'samuel.legrain@bstorm.be', '1987-09-27'),
+		('Aurélien', 'Strimelle', 'aurelien.strimelle@bstorm.be', '1985-01-01')
+GO
+
+INSERT INTO [User] ([User_Id],[First_Name],[Last_Name],[Email],[Birth_Date],[Phone_Number])
+	VALUES (DEFAULT, 'Mélanie', 'Geerts', 'melanie.geerts@bstorm.be', '1986-01-01', DEFAULT)
+GO
+
+--ATTENTION : Les mot-clés DEFAULT ou NULL ne fonctionnent pas avec les colonnes IDENTITY
+INSERT INTO [BackupUser] ([User_Id],[First_Name],[Last_Name],[Email],[Birth_Date])
+	VALUES ((SELECT [USER_ID] FROM [User] WHERE [Last_Name] = 'Geerts'), 'Mélanie', 'Geerts', 'melanie.geerts@bstorm.be', '1986-01-01')
+GO
+
+INSERT INTO [BackupUser] ([User_Id],[First_Name],[Last_Name],[Email],[Birth_Date])
+	SELECT [User_Id],[First_Name],[Last_Name],[Email],[Birth_Date]
+		FROM [User]
+		WHERE [User_Id] NOT IN (SELECT [User_Id] FROM [BackupUser])
+
+--UPDATE
+UPDATE [User]
+	SET [Email] = LOWER(CONCAT([First_Name],'.',[Last_Name],'@technofuturtic.be'))
+
+UPDATE [User]
+	SET [Birth_Date] = GETDATE()
+
+UPDATE [User]
+	SET [Last_Name] = 'Gérard'
+	WHERE	[First_Name] LIKE 'Mélanie'
+		AND [Last_Name] LIKE 'Geerts'
+
+UPDATE [User]
+	SET [Last_Name] = [BackupUser].[Last_Name],
+		[Email] = [BackupUser].[Email]
+	FROM [BackupUser]
+	WHERE [User].[User_Id] = [BackupUser].[User_Id]
+
+--DELETE
+DELETE FROM [User]
+	WHERE [Email] LIKE '%cognitic%'
+
+--Supprime le dernier utilisateur sauvegarder dans le Backup
+DELETE FROM [User]
+	WHERE [User_Id] = (
+		SELECT TOP 1 [User].[User_Id] 
+			FROM [BackupUser]
+				JOIN [User]
+					ON [BackupUser].[User_Id] = [User].[User_Id]
+			WHERE [BackupDate] >= ALL (
+				SELECT [BackupDate] 
+					FROM [BackupUser]))
+
+--OUTPUT
+
+INSERT INTO [User]([First_Name],[Last_Name],[Email],[Birth_Date])
+	OUTPUT [inserted].*
+	VALUES ('Aurélien','Freyling','aurelien.freyling@bstorm.be','1987-01-01')
+GO
+
+UPDATE [User]
+	SET [Email] = LOWER(CONCAT([First_Name],'.',[Last_Name],'@technofuturtic.be'))
+	OUTPUT [deleted].[Email] AS [OldMail], [inserted].[Email] AS [NewMail]
+	WHERE [User_Id] = 'DC941251-FD9A-42E0-BADE-88F45C5A0971'
+
+DELETE FROM [User]
+	OUTPUT [deleted].[First_Name], [deleted].[Last_Name]
+	WHERE [User_Id] = 'DC941251-FD9A-42E0-BADE-88F45C5A0971'
+	

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-05 12:01:58 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDU7IjExOjAwOjUxICI7MjkyNA=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDU7IjEyOjAxOjU4ICI7MTszMDQx"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Nb, RndNb, Cpt" type="Integer" array="False" size=""/>
+            <assign variable="RndNb" expression="Random(101)"/>
+            <assign variable="Cpt" expression="0"/>
+            <do expression="RndNb != Nb">
+                <output expression="&quot;Entrez un nombre:&quot;" newline="True"/>
+                <input variable="Nb"/>
+                <assign variable="Cpt" expression="Cpt + 1"/>
+                <if expression="RndNb &gt; Nb">
+                    <then>
+                        <output expression="&quot;C'est plus&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <if expression="RndNb &lt; Nb">
+                            <then>
+                                <output expression="&quot;C'est moins&quot;" newline="True"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </do>
+            <output expression="&quot;Bravo - &quot; &amp; Cpt &amp; &quot; essai(s)&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

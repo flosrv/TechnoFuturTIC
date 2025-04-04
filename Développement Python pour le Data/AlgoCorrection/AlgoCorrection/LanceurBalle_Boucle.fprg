@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-04 12:17:28 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjEyOjAzOjMyICI7MjkyNg=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjEyOjE3OjI4ICI7MTszMDQ0"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="joueurPret" type="Boolean" array="False" size=""/>
+            <declare name="StockPanier" type="Integer" array="False" size=""/>
+            <declare name="encore" type="Boolean" array="False" size=""/>
+            <do expression="encore">
+                <output expression="&quot;Combien de balle?&quot;" newline="True"/>
+                <input variable="StockPanier"/>
+                <while expression="StockPanier &gt; 0">
+                    <output expression="&quot;Etes vous pret?&quot;" newline="True"/>
+                    <input variable="joueurPret"/>
+                    <if expression="joueurPret">
+                        <then>
+                            <output expression="&quot;Go&quot;" newline="True"/>
+                            <assign variable="StockPanier" expression="StockPanier - 1"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Sois pret!&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </while>
+                <output expression="&quot;Plus de balle&quot;" newline="True"/>
+                <output expression="&quot;Encore?&quot;" newline="True"/>
+                <input variable="encore"/>
+            </do>
+            <output expression="&quot;Bye bye&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

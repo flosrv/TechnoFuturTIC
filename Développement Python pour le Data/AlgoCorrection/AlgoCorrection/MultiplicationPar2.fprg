@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-04 11:41:07 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjExOjM4OjQ5ICI7Mjk0MQ=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDQ7IjExOjQxOjA3ICI7MTszMDM3"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nb, result" type="Integer" array="False" size=""/>
+            <assign variable="nb" expression="0"/>
+            <while expression="nb &lt;= 10">
+                <assign variable="result" expression="nb * 2"/>
+                <output expression="nb &amp; &quot; x 2 = &quot; &amp; result" newline="True"/>
+                <assign variable="nb" expression="nb + 1"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Forma700"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2018-04-03 02:26:12 "/>
+        <attribute name="created" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjAyOjIwOjEwICI7MjkxOQ=="/>
+        <attribute name="edited" value="Rm9ybWE3MDA7REVTS1RPUC1LUlE0RU1GOzIwMTgtMDQtMDM7IjAyOjI2OjEyICI7MTszMDM1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Annee" type="Integer" array="False" size=""/>
+            <output expression="&quot;Entrez une annee:&quot;" newline="True"/>
+            <input variable="Annee"/>
+            <if expression="(((Annee % 4 == 0) &amp;&amp; (Annee % 100 != 0)) || (Annee % 400 == 0))">
+                <then>
+                    <output expression="&quot;Annee bissextile&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Annee non bissextile&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
