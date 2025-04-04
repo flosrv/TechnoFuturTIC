@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Exercice Javascript</title>
+        <form name="monForm">
+
+            <label for="nom">Nom : </label>
+            <input name="nom" id="name_response" />
+
+            <label for="prenom">Prenom : </label>
+            <input name="prénom" id="surname_response" />
+
+            <label for="email">Email : </label>
+            <input name="email" id="email_response" />
+
+
+            <button type="button" onclick="getNameFromForm();">Soumettre</button>
+    </form>
+        
+    <script>
+      function getnameFromForm() {
+    // Récupère le formulaire
+    let form = document.monForm;
+
+    // Récupère les champs du formulaire
+    let name_field = form.nom;
+    let surname_field = form.prenom;
+    let email_field = form.email;
+
+    // Récupère les valeurs des champs
+    let name_response = name_field.value;
+    let surname_response = surname_field.value;
+    let email_response = email_field.value;
+
+    return name_response, surname_response, email_response
+}
+
+function traiterFormulaire(){
+    
+    
+    name_response, surname_response, email_response = getnameFromForm()
+    // Affiche les valeurs dans la console (par exemple)
+    console.log("Nom : " + name_response);
+    console.log("Prénom : " + surname_response);
+    console.log("Email : " + email_response);
+}
+    </script>
+  </head>
+  <body>
+    <form>
+      
+      <button type="button" onclick="traiterFormulaire()">Traiter</button>
+    </form>
+    
+    <script>
+      function traiterFormulaire(){
+        
+      }
+    </script>
+  </body>
+</html>
