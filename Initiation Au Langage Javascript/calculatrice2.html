@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+    <style>
+        .calculator { width: 220px; margin: auto; }
+        .input { width: 100%; height: 40px; text-align: right; font-size: 18px; }
+        .button { width: 45px; height: 45px; font-size: 20px; }
+        .row { display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" class="input" disabled>
+        <div class="row">
+            <button class="button" data-value="1">1</button>
+            <button class="button" data-value="2">2</button>
+            <button class="button" data-value="3">3</button>
+            <button class="button" data-value="+">+</button>
+        </div>
+        <div class="row">
+            <button class="button" data-value="4">4</button>
+            <button class="button" data-value="5">5</button>
+            <button class="button" data-value="6">6</button>
+            <button class="button" data-value="-">-</button>
+        </div>
+        <div class="row">
+            <button class="button" data-value="7">7</button>
+            <button class="button" data-value="8">8</button>
+            <button class="button" data-value="9">9</button>
+            <button class="button" data-value="*">*</button>
+        </div>
+        <div class="row">
+            <button class="button" data-value="0">0</button>
+            <button class="button" id="clear">CLR</button>
+            <button class="button" id="back">BACK</button>
+            <button class="button" data-value="/">/</button>
+        </div>
+        <div class="row">
+            <button class="button" id="equal">=</button>
+        </div>
+    </div>
+
+    <script>
+        let operand1 = '';
+        let operand2 = '';
+        let operator = '';
+        let resultDisplayed = false;
+
+        const display = document.getElementById('display');
+        const buttons = document.querySelectorAll('.button');
+        const clearButton = document.getElementById('clear');
+        const backButton = document.getElementById('back');
+        const equalButton = document.getElementById('equal');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (resultDisplayed) {
+                    display.value = '';
+                    resultDisplayed = false;
+                }
+
+                const value = button.getAttribute('data-value');
+                if (value) {
+                    display.value += value;
+                }
+                
+                if (button.getAttribute('data-value') && ['+', '-', '*', '/'].includes(button.getAttribute('data-value'))) {
+                    operand1 = display.value.slice(0, -1);
+                    operator = value;
+                    display.value = '';
+                }
+            });
+        });
+
+        clearButton.addEventListener('click', () => {
+            operand1 = '';
+            operand2 = '';
+            operator = '';
+            display.value = '';
+        });
+
+        backButton.addEventListener('click', () => {
+            display.value = display.value.slice(0, -1);
+        });
+
+        equalButton.addEventListener('click', () => {
+            if (operand1 !== '' && display.value !== '') {
+                operand2 = display.value;
+                let result;
+                operand1 = parseFloat(operand1);
+                operand2 = parseFloat(operand2);
+
+                switch (operator) {
+                    case '+':
+                        result = operand1 + operand2;
+                        break;
+                    case '-':
+                        result = operand1 - operand2;
+                        break;
+                    case '*':
+                        result = operand1 * operand2;
+                        break;
+                    case '/':
+                        if (operand2 === 0) {
+                            alert('Erreur: Division par zéro');
+                            return;
+                        }
+                        result = operand1 / operand2;
+                        break;
+                    default:
+                        return;
+                }
+
+                display.value = result;
+                resultDisplayed = true;
+            }
+        });
+    </script>
+</body>
+</html>
